@@ -1,4 +1,4 @@
-package com.example.springboot_example.mdels;
+package com.example.springboot_example.models;
 
 import java.math.BigDecimal;
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.springboot_example.dtos.ProductDto;
 import com.example.springboot_example.entities.Product;
-import com.example.springboot_example.mdels.ProductResponseModel;
+import com.example.springboot_example.models.ProductResponseModel;
 
 @Component
 public class ProductMapper {
