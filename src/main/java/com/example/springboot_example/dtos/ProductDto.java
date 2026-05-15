@@ -1,9 +1,11 @@
 package com.example.springboot_example.dtos;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public record ProductDto (
   String name,
   String description,
-  BigDecimal price
+  BigDecimal price,
+  UUID resourceId
 ) {}
