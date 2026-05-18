@@ -1,6 +1,7 @@
 package com.example.springboot_example.controllers;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import com.example.springboot_example.models.ProductRequestModel;
 import com.example.springboot_example.models.ProductResponseModel;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -37,4 +39,9 @@ public class ProductController {
     return productFacade.addProduct(dto);
   }
   
+  @GetMapping(path = "/{resourceId}")
+  public ProductDto findById(@PathVariable("resourceId") UUID resourceId) {
+    return productFacade.getByResourceId(resourceId);
+  }
+
 }

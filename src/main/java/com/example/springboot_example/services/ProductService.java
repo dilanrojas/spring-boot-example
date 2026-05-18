@@ -31,4 +31,9 @@ public class ProductService implements IProductService {
       .build();
     return productRepository.addProduct(product);
   }
+
+  @Override
+  public Product getByResourceId(UUID resourceId) {
+    return productRepository.getByResourceId(resourceId);
+  }
 }

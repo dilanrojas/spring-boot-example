@@ -1,11 +1,14 @@
 package com.example.springboot_example.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.example.springboot_example.entities.Product;
+import java.util.UUID;
+
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
@@ -15,5 +18,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
   default Product addProduct(Product product) {
     return save(product);
+  }
+
+  Optional<Product> findByResourceId(UUID resourceId);
+
+  default Product getByResourceId(UUID resourceId) {
+    return this.findByResourceId(resourceId).orElse(null);
   }
 }
