@@ -8,4 +8,4 @@ public record ProductResponseModel (
   String description,
   BigDecimal price,
   UUID resourceId
-) { }
+) {}

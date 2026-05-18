@@ -7,12 +7,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.springboot_example.dtos.ProductDto;
 import com.example.springboot_example.facade.IProductFacade;
 import com.example.springboot_example.mappers.ProductMapper;
+import com.example.springboot_example.models.ProductRequestModel;
 import com.example.springboot_example.models.ProductResponseModel;
 
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/products")
@@ -27,4 +30,11 @@ public class ProductController {
   public ResponseEntity<List<ProductResponseModel>> findAll() {
     return ResponseEntity.ok(productMapper.toProductResponseModelList(productFacade.getAll()));
   }
+
+  @PostMapping
+  public ProductDto save(@RequestBody ProductRequestModel productRequestModel) {
+    var dto = productMapper.toProductRequestDto(productRequestModel);
+    return productFacade.addProduct(dto);
+  }
+  
 }

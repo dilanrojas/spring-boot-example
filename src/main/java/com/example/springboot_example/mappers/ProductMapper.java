@@ -6,7 +6,9 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 import com.example.springboot_example.dtos.ProductDto;
+import com.example.springboot_example.dtos.ProductRequestDto;
 import com.example.springboot_example.entities.Product;
+import com.example.springboot_example.models.ProductRequestModel;
 import com.example.springboot_example.models.ProductResponseModel;
 
 @Component
@@ -45,5 +47,15 @@ public class ProductMapper {
     return productDtos.stream()
       .map(this::toProductResponseModel)
       .collect(Collectors.toList());
+  }
+
+  public ProductRequestDto toProductRequestDto(ProductRequestModel product) {
+    if (product == null) return null;
+
+    ProductRequestDto productDto = new ProductRequestDto();
+    productDto.setName(product.name());
+    productDto.setDescription(product.description());
+    productDto.setPrice(product.price());
+    return productDto;
   }
 }
