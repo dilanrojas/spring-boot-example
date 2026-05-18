@@ -25,4 +25,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
   default Product getByResourceId(UUID resourceId) {
     return this.findByResourceId(resourceId).orElse(null);
   }
+
+  default Product updateProduct(Product product) {
+    return save(product);
+  }
 }

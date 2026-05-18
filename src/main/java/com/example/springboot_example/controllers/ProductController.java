@@ -17,6 +17,7 @@ import com.example.springboot_example.models.ProductResponseModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
@@ -44,4 +45,9 @@ public class ProductController {
     return productFacade.getByResourceId(resourceId);
   }
 
+  @PutMapping(path = "/{resourceId}")
+  public ProductDto update(@PathVariable("resourceId") UUID resourceId, @RequestBody ProductRequestModel productRequestModel) {
+    var dto = productMapper.toProductRequestDto(productRequestModel);
+    return productFacade.updateProduct(resourceId, dto);
+  }
 }

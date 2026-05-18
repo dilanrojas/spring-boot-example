@@ -36,4 +36,13 @@ public class ProductService implements IProductService {
   public Product getByResourceId(UUID resourceId) {
     return productRepository.getByResourceId(resourceId);
   }
+
+  @Override
+  public Product updateProduct(UUID resourceId, ProductRequestDto productDto) {
+    var product = productRepository.findByResourceId(resourceId).orElseThrow(() -> new RuntimeException("Product not found"));
+    product.setName(productDto.getName());
+    product.setDescription(productDto.getDescription());
+    product.setPrice(productDto.getPrice());
+    return productRepository.updateProduct(product);
+  }
 }

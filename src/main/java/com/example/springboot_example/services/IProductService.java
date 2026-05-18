@@ -10,4 +10,5 @@ public interface IProductService {
   List<Product> getAll();  
   Product addProduct(ProductRequestDto product);
   Product getByResourceId(UUID resourceId);
+  Product updateProduct(UUID resourceId, ProductRequestDto productDto);
 }
